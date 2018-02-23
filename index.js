@@ -3,8 +3,19 @@ var Twit = require("twit");
 var config = require('./config.js');
 var T = new Twit(config);
 var stream = T.stream('user');
-var question = require('./question.js');
-
+// var question = require('./question.js');
+var questions = [
+    "what color is my eye?",
+    "what makes you special?",
+    "tell me about yourself?",
+    "tell me about a time where you worked with a difficult person and how you dealt with it"
+]
+var answers = [
+    "brown",
+    "If would describe my", 
+    "I'm a red power ranger and can call upon a megazord to destroy my enemies",
+    "One time we worked "
+]
 
 
 function tweetIt(txt){
@@ -30,7 +41,7 @@ function tweetEvent(tweet) {
     console.log("Tweet Object ", tweet);
     questions.forEach(function(question, index){
         if(text.includes(question)){
-            tweetIt('@'+ from + answers[index]);
+            tweetIt(answers[index]);
         }
         
     })
