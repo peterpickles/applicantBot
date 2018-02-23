@@ -4,17 +4,24 @@ var config = require('./config.js');
 var T = new Twit(config);
 var stream = T.stream('user');
 // var question = require('./question.js');
+
 var questions = [
     "what color is my eye?",
+    "what is the answer to life?",
     "what makes you special?",
-    "tell me about yourself?",
-    "tell me about a time where you worked with a difficult person and how you dealt with it"
+    "tell me about yourself",
+    "tell me about your alterego?",
+    "tell me about a time where you worked with a difficult person and how you dealt with it",
+    "what is the most recent project you have done?",
 ]
 var answers = [
     "brown",
-    "If would describe my", 
+    "42",
+    "I stay up to date on current tech, work until the job gets done, integrate well team sizes, all while being on time for supper everynight!", 
+    "I am an adopted son of the PNW with a PM for tech startups.  My passion is building great life style apps using the latest tech",
     "I'm a red power ranger and can call upon a megazord to destroy my enemies",
-    "One time we worked "
+    "Oh my, that will take a little more than 142 characters, checkout my answer here:http://bit.ly/2oldpWs",
+    "glad you asked! I love automating processes, I made a node.js/express/twitter API app.  Check it out here:http://bit.ly/2ELIFYW"
 ]
 
 
@@ -23,6 +30,7 @@ function tweetIt(txt){
         status: txt
     }
     T.post('statuses/update', tweet, tweeted);
+    console.log("sending", txt)
     function tweeted(err, data, response) {
         if (err){
             console.log("Something went wrong", err);
@@ -41,7 +49,7 @@ function tweetEvent(tweet) {
     console.log("Tweet Object ", tweet);
     questions.forEach(function(question, index){
         if(text.includes(question)){
-            tweetIt(answers[index]);
+            tweetIt("@"+from+""+answers[index]);
         }
         
     })
