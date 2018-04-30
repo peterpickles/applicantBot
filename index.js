@@ -55,20 +55,14 @@ function tweetEvent(tweet) {
         }
         
     })
-        
-    //while someone is tweeting at me
-    //if they say "What's the weather today?"
-    //I will say "rainy!"
 }
-
-
-stream.on('follow', followed);
-function followed(tweet) {
-    var name = tweet.source.name;
-    var screenName = tweet.source.screen_name;
-    console.log("the screename is ", screenName);
-    tweetIt('@' + screenName + ' How you doinnnnn!');
-}
+// stream.on('follow', followed);
+// function followed(tweet) {
+//     var name = tweet.source.name;
+//     var screenName = tweet.source.screen_name;
+//     console.log("the screename is ", screenName);
+//     tweetIt('@' + screenName + ' How you doinnnnn!');
+// }
 
 
 
